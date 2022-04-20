@@ -1,7 +1,7 @@
 import { Animal } from './animal';
 
 // Cette classe étant abstraite, on ne peut plus l'instancier
-export abstract class Petabstract implements Animal {
+export abstract class PetAbstract implements Animal {
   /* private name: string;
   private race: string; */
 
@@ -11,8 +11,6 @@ export abstract class Petabstract implements Animal {
   }
 
 
-  talk() {
-    console.log("coucou");
-  }
+  abstract talk();
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Pet } from '../model/pet';
 import { Employee2 } from '../model/employee2';
 import { Thing } from '../model/thing';
-
+import { Group } from '../model/group';
 
 @Component({
   selector: 'sty-root',
@@ -67,6 +67,32 @@ export class AppComponent {
         console.log(petOrThing.price);
       }
     }
+
+    // Généricité
+    let stringGroup = new Group<string>(['a','b'],'c');
+    console.log("stringGroup");
+    console.log(stringGroup.isMember('d'));
+    console.log(stringGroup.isMember('a'));
+
+    let numberGroup = new Group<number>([1,2,3,5,8],100);
+    console.log("numberGroup");
+    console.log(numberGroup.isMember(3));
+    console.log(numberGroup.isMember(100));
+
+    console.log("petGroup");
+    let filou = new Pet('Filou','malinois',6);
+    let medor = new Pet('Medor','caniche',5);
+    let petGroup = new Group<Pet>([
+      filou,
+      medor,
+      new Pet('Lassie','épagneul',12)
+    ],
+    new Pet('Scoobidoo','levrier',10)
+    );
+    console.log(petGroup.isMember(filou));
+    console.log(petGroup.isMember(new Pet('Filou','malinois',6)));
+    console.log(petGroup.isMember(new Pet('Filoux','balinois',7)));
+
 
     // ---------
 
